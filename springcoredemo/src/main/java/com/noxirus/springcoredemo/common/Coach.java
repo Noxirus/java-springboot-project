@@ -1,4 +1,4 @@
-package com.noxirus.springcoredemo;
+package com.noxirus.springcoredemo.common;
 
 public interface Coach {
     String getDailyWorkout();
