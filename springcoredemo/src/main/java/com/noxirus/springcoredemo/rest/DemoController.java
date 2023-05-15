@@ -14,6 +14,7 @@ public class DemoController {
     //The qualifier needs to be the name of the class, but in camel case
     @Autowired
     public DemoController(@Qualifier("trackCoach") Coach theCoach){
+        System.out.println("In constructor: " + getClass().getSimpleName());
         myCoach = theCoach;
     }
 
