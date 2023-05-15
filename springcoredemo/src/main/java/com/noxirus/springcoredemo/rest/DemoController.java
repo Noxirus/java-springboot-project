@@ -14,8 +14,8 @@ public class DemoController {
     // Dependency Injection Reference
     //The qualifier needs to be the name of the class, but in camel case
     @Autowired
-    public DemoController(@Qualifier("swimCoach") Coach theCoach,
-                          @Qualifier("swimCoach") Coach theAnotherCoach){
+    public DemoController(@Qualifier("aquatic") Coach theCoach,
+                          @Qualifier("aquatic") Coach theAnotherCoach){
         System.out.println("In constructor: " + getClass().getSimpleName());
         myCoach = theCoach;
         anotherCoach = theAnotherCoach;
