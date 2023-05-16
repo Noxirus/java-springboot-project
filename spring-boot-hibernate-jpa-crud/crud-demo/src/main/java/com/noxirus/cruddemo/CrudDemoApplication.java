@@ -19,7 +19,9 @@ public class CrudDemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner -> {
-			System.out.println("Deleted: " + studentDAO.deleteAll());
+			createStudent(studentDAO, new Student("Prestor", "Pince", "PPince@yahoo.com"));
+			createStudent(studentDAO, new Student("May", "Bud", "Mud@yahoo.com"));
+			createStudent(studentDAO, new Student("Incide", "Syrall", "Incall@yahoo.com"));
 		};
 	}
 
