@@ -11,4 +11,9 @@ public class DemoController {
         return "home"; //This is the view name
     }
 
+    @GetMapping("/leaders")
+    public String showLeaders(){ return "leaders"; }
+
+    @GetMapping("/systems")
+    public String showSystems(){ return "systems"; }
 }
