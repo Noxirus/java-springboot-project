@@ -1,0 +1,12 @@
+package com.noxirus.cruddemo.dao;
+
+import com.noxirus.cruddemo.entity.Instructor;
+
+public interface AppDAO {
+
+    void save(Instructor theInstructor);
+
+    Instructor findInstructorById(int theId);
+
+    void deleteInstructorById(int theId);
+}
