@@ -1,6 +1,7 @@
 package com.noxirus.cruddemo;
 
 import com.noxirus.cruddemo.dao.AppDAO;
+import com.noxirus.cruddemo.entity.Course;
 import com.noxirus.cruddemo.entity.Instructor;
 import com.noxirus.cruddemo.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
@@ -18,8 +19,25 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-			deleteInstructorDetail(appDAO);
+			createInstructorWithCourses(appDAO);
 		};
+	}
+
+	private void createInstructorWithCourses(AppDAO appDAO) {
+		Instructor tempInstructor = new Instructor("Yoshi", "Ken", "Yoken@gmail.com");
+
+		InstructorDetail tempInstructorDetail = new InstructorDetail("www.pupper.com/youtube", "eating cheese");
+
+		tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+		Course tempCourse1 = new Course("Air guitar - Ultimate Guide");
+		Course tempCourse2 = new Course("Pinball Master Class - Ultimate Guide");
+
+		tempInstructor.add(tempCourse1);
+		tempInstructor.add(tempCourse2);
+
+		appDAO.save(tempInstructor);
+		System.out.println("Done");
 	}
 
 	private void deleteInstructorDetail(AppDAO appDAO){
