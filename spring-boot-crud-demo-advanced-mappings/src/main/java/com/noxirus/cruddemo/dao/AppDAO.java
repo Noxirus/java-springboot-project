@@ -1,6 +1,7 @@
 package com.noxirus.cruddemo.dao;
 
 import com.noxirus.cruddemo.entity.Instructor;
+import com.noxirus.cruddemo.entity.InstructorDetail;
 
 public interface AppDAO {
 
@@ -9,4 +10,8 @@ public interface AppDAO {
     Instructor findInstructorById(int theId);
 
     void deleteInstructorById(int theId);
+
+    InstructorDetail findInstructorDetailById(int theId);
+
+    void deleteInstructorDetailById(int theId);
 }
