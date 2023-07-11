@@ -21,9 +21,21 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-			findCoursesForInstructor(appDAO);
+			findInstructorWithCoursesJoinFetch(appDAO);
 		};
 	}
+
+	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+		int theId = 1;
+
+		System.out.println("Finding instructor id: " + theId);
+		Instructor tempInstructor = appDAO.findInstructorByIdJoinFetch(theId);
+
+		System.out.println("Found Instructor: " + tempInstructor);
+		System.out.println("The Courses: " + tempInstructor.getCourses());
+		System.out.println("You're done!");
+	}
+
 
 	private void findCoursesForInstructor(AppDAO appDAO) {
 		int theId = 1;
@@ -85,7 +97,6 @@ public class CruddemoApplication {
 		System.out.println(tempInstructorDetail.getInstructor());
 	}
 
-
 	private void createInstructor(AppDAO appDAO) {
 		Instructor tempInstructor = new Instructor("Yoshi", "Ken", "Yoken@gmail.com");
 
@@ -109,5 +120,4 @@ public class CruddemoApplication {
 	private void deleteInstructor(AppDAO appDAO){
 		appDAO.deleteInstructorById(1);
 	}
-
 }
