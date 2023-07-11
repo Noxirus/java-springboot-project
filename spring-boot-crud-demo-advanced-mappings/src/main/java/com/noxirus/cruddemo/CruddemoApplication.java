@@ -21,8 +21,26 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-			updateInstructor(appDAO);
+			deleteCourse(appDAO);
 		};
+	}
+
+	private void deleteCourse(AppDAO appDAO) {
+		int theId = 10;
+		System.out.println("Deleting course id: " + theId);
+
+		appDAO.deleteCourseById(theId);
+	}
+
+	private void updateCourse(AppDAO appDAO) {
+
+		int theId = 10;
+
+		System.out.println("Finding course id: " + theId);
+		Course tempCourse = appDAO.findCourseById(theId);
+
+		tempCourse.setTitle("This is a new Course!");
+		appDAO.update(tempCourse);
 	}
 
 	private void updateInstructor(AppDAO appDAO) {
