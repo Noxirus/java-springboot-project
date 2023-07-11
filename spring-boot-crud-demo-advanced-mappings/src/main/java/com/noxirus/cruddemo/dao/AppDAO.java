@@ -1,7 +1,10 @@
 package com.noxirus.cruddemo.dao;
 
+import com.noxirus.cruddemo.entity.Course;
 import com.noxirus.cruddemo.entity.Instructor;
 import com.noxirus.cruddemo.entity.InstructorDetail;
+
+import java.util.List;
 
 public interface AppDAO {
 
@@ -14,4 +17,6 @@ public interface AppDAO {
     InstructorDetail findInstructorDetailById(int theId);
 
     void deleteInstructorDetailById(int theId);
+
+    List<Course> findCoursesByInstructorId(int theId);
 }
