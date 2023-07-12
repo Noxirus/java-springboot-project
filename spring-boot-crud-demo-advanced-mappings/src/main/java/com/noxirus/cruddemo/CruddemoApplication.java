@@ -4,6 +4,7 @@ import com.noxirus.cruddemo.dao.AppDAO;
 import com.noxirus.cruddemo.entity.Course;
 import com.noxirus.cruddemo.entity.Instructor;
 import com.noxirus.cruddemo.entity.InstructorDetail;
+import com.noxirus.cruddemo.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,8 +22,19 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-			deleteCourse(appDAO);
+			createCourseAndReviews(appDAO);
 		};
+	}
+
+	private void createCourseAndReviews(AppDAO appDAO) {
+		Course tempCourse = new Course("Pacman - How To Score One Million Points");
+
+		tempCourse.addReview(new Review("Great Course! Lots of work"));
+		tempCourse.addReview(new Review("Terrible! Lots of work"));
+		tempCourse.addReview(new Review("It was ok! Lots of work"));
+		tempCourse.addReview(new Review("Long! Lots of work"));
+
+		appDAO.save(tempCourse);
 	}
 
 	private void deleteCourse(AppDAO appDAO) {
@@ -60,7 +72,6 @@ public class CruddemoApplication {
 		System.out.println("The Courses: " + tempInstructor.getCourses());
 		System.out.println("You're done!");
 	}
-
 
 	private void findCoursesForInstructor(AppDAO appDAO) {
 		int theId = 1;
