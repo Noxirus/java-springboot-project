@@ -3,6 +3,7 @@ package com.noxirus.cruddemo.dao;
 import com.noxirus.cruddemo.entity.Course;
 import com.noxirus.cruddemo.entity.Instructor;
 import com.noxirus.cruddemo.entity.InstructorDetail;
+import com.noxirus.cruddemo.entity.Student;
 
 import java.util.List;
 
@@ -33,4 +34,12 @@ public interface AppDAO {
     void save(Course theCourse);
 
     Course findCourseAndReviewByCourseId(int theId);
+
+    Course findCourseAndStudentsByCourseId(int theId);
+
+    Student findStudentAndCoursesByStudentId(int theId);
+
+    void update(Student tempStudent);
+
+    void deleteStudentById(int theId);
 }

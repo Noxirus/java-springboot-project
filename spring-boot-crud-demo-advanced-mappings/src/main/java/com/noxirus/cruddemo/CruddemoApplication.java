@@ -1,10 +1,7 @@
 package com.noxirus.cruddemo;
 
 import com.noxirus.cruddemo.dao.AppDAO;
-import com.noxirus.cruddemo.entity.Course;
-import com.noxirus.cruddemo.entity.Instructor;
-import com.noxirus.cruddemo.entity.InstructorDetail;
-import com.noxirus.cruddemo.entity.Review;
+import com.noxirus.cruddemo.entity.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,8 +19,57 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-
+			deleteStudent(appDAO);
 		};
+	}
+
+	private void deleteStudent(AppDAO appDAO) {
+		int theId = 1;
+		appDAO.deleteStudentById(theId);
+	}
+
+	private void addMoreCoursesForStudent(AppDAO appDAO) {
+		int theId = 2;
+
+		Student tempStudent = appDAO.findStudentAndCoursesByStudentId(theId);
+		Course tempCourse1 = new Course("How to play chess");
+		Course tempCourse2 = new Course("Parenting 101");
+		Course tempCourse3 = new Course("Sleep fundamentals");
+
+		tempStudent.addCourse(tempCourse1);
+		tempStudent.addCourse(tempCourse2);
+		tempStudent.addCourse(tempCourse3);
+
+		appDAO.update(tempStudent);
+	}
+
+	private void findStudentAndCourses(AppDAO appDAO) {
+		int theId = 2;
+		Student tempStudent = appDAO.findStudentAndCoursesByStudentId(theId);
+
+		System.out.println(tempStudent);
+		System.out.println(tempStudent.getCourses());
+	}
+
+	private void findCourseAndStudents(AppDAO appDAO) {
+		int theId = 10;
+
+		Course tempCourse = appDAO.findCourseAndStudentsByCourseId(theId);
+
+		System.out.println(tempCourse);
+		System.out.println(tempCourse.getStudents());
+	}
+
+	private void createCourseAndStudents(AppDAO appDAO) {
+		Course tempCourse = new Course("Pacman - how to score one million points");
+
+		Student tempStudent1 = new Student("Flip", "Phil", "FilFlip@gmail.com");
+		Student tempStudent2 = new Student("Flop", "Phinneas", "Floppinneas@gmail.com");
+
+		tempCourse.addStudent(tempStudent1);
+		tempCourse.addStudent(tempStudent2);
+
+		appDAO.save(tempCourse);
 	}
 
 	private void deleteCourseAndReviews(AppDAO appDAO) {
