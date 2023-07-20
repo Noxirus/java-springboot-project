@@ -22,7 +22,7 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-				
+
 		};
 	}
 
@@ -40,7 +40,6 @@ public class CruddemoApplication {
 		System.out.println(tempCourse);
 		System.out.println(tempCourse.getReviews());
 	}
-
 
 	private void createCourseAndReviews(AppDAO appDAO) {
 		Course tempCourse = new Course("Pacman - How To Score One Million Points");
