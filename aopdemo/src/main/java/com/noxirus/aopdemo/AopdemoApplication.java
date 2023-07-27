@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.lang.reflect.Member;
+import java.util.List;
 
 @SpringBootApplication
 public class AopdemoApplication {
@@ -20,16 +21,19 @@ public class AopdemoApplication {
 	public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO){
 
 		return runner -> {
-			demoTheBeforeAdvice(theAccountDAO, theMembershipDAO);
+			demoTheAfterReturningAdvice(theAccountDAO);
 		};
 	}
 
+	private void demoTheAfterReturningAdvice(AccountDAO theAccountDAO) {
+		List<Account> theAccounts = theAccountDAO.findAccounts();
+
+		System.out.println("Accounts: " + theAccounts);
+	}
+
 	private void demoTheBeforeAdvice(AccountDAO theAccountDAO,MembershipDAO theMembershipDAO) {
-		theAccountDAO.addAccount(new Account(), true);
-		theAccountDAO.addAccount(new Account(), true);
-		theAccountDAO.addAccount(new Account(), true);
-		//theAccountDAO.setName("Charles");
-		//theAccountDAO.getName();
+		theAccountDAO.addAccount(new Account("This is the account", "Level 56"), true);
+		theMembershipDAO.goToSleep();
 
 	}
 

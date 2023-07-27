@@ -3,12 +3,26 @@ package com.noxirus.aopdemo.dao;
 import com.noxirus.aopdemo.Account;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class AccountDAOImpl implements AccountDAO{
 
     private String name;
     private String serviceCode;
 
+
+    @Override
+    public List<Account> findAccounts() {
+        List<Account> myAccounts = new ArrayList<>();
+
+        myAccounts.add(new Account("Fred", "Level 2"));
+        myAccounts.add(new Account("Samly", "Level 1"));
+        myAccounts.add(new Account("Aletia", "Level 34"));
+
+        return myAccounts;
+    }
 
     @Override
     public void addAccount(Account theAccount, boolean vipFlag) {

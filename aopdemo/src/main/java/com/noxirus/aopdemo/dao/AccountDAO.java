@@ -2,7 +2,11 @@ package com.noxirus.aopdemo.dao;
 
 import com.noxirus.aopdemo.Account;
 
+import java.util.List;
+
 public interface AccountDAO {
+
+    List<Account> findAccounts();
 
     void addAccount(Account theAccount, boolean vipFlag);
 
