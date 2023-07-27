@@ -20,13 +20,12 @@ public class AopdemoApplication {
 	public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO){
 
 		return runner -> {
-
 			demoTheBeforeAdvice(theAccountDAO, theMembershipDAO);
 		};
 	}
 
 	private void demoTheBeforeAdvice(AccountDAO theAccountDAO,MembershipDAO theMembershipDAO) {
-		theAccountDAO.addAccount(new Account());
+		theAccountDAO.addAccount(new Account(), true);
 		theMembershipDAO.addMember();
 
 	}
