@@ -12,7 +12,7 @@ public class AccountDAOImpl implements AccountDAO{
 
     @Override
     public void addAccount(Account theAccount, boolean vipFlag) {
-        System.out.println("Adding Account");
+        System.out.println("Adding Account\n");
     }
 
     @Override

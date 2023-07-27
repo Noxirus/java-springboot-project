@@ -26,8 +26,10 @@ public class AopdemoApplication {
 
 	private void demoTheBeforeAdvice(AccountDAO theAccountDAO,MembershipDAO theMembershipDAO) {
 		theAccountDAO.addAccount(new Account(), true);
-		theAccountDAO.setName("Charles");
-		theAccountDAO.getName();
+		theAccountDAO.addAccount(new Account(), true);
+		theAccountDAO.addAccount(new Account(), true);
+		//theAccountDAO.setName("Charles");
+		//theAccountDAO.getName();
 
 	}
 
