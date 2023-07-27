@@ -26,9 +26,8 @@ public class AopdemoApplication {
 
 	private void demoTheBeforeAdvice(AccountDAO theAccountDAO,MembershipDAO theMembershipDAO) {
 		theAccountDAO.addAccount(new Account(), true);
-		theMembershipDAO.addMember();
-		theAccountDAO.doWork();
-		theMembershipDAO.goToSleep();
+		theAccountDAO.setName("Charles");
+		theAccountDAO.getName();
 
 	}
 
