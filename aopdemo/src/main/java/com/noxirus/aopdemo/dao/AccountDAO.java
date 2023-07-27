@@ -1,6 +1,8 @@
 package com.noxirus.aopdemo.dao;
 
+import com.noxirus.aopdemo.Account;
+
 public interface AccountDAO {
 
-    void addAccount();
+    void addAccount(Account theAccount);
 }
