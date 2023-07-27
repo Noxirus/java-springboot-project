@@ -1,10 +1,13 @@
 package com.noxirus.aopdemo;
 
 import com.noxirus.aopdemo.dao.AccountDAO;
+import com.noxirus.aopdemo.dao.MembershipDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.lang.reflect.Member;
 
 @SpringBootApplication
 public class AopdemoApplication {
@@ -14,17 +17,17 @@ public class AopdemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO){
+	public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO){
 
 		return runner -> {
 
-			demoTheBeforeAdvice(theAccountDAO);
+			demoTheBeforeAdvice(theAccountDAO, theMembershipDAO);
 		};
 	}
 
-	private void demoTheBeforeAdvice(AccountDAO theAccountDAO) {
+	private void demoTheBeforeAdvice(AccountDAO theAccountDAO,MembershipDAO theMembershipDAO) {
 		theAccountDAO.addAccount();
-		theAccountDAO.addAccount();
+		theMembershipDAO.addAccount();
 
 	}
 
