@@ -22,7 +22,16 @@ public class MyDemoLoggingAspect {
 
         long begin = System.currentTimeMillis();
 
-        Object result = theProceedingJoinPoint.proceed();
+        Object result = null;
+
+        try{
+            result = theProceedingJoinPoint.proceed();
+        }
+        catch (Exception exc){
+            System.out.println(exc.getMessage());
+
+            result = "Major accident, but relief is on the way";
+        }
 
         long end = System.currentTimeMillis();
 
